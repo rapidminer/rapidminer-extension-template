@@ -1,11 +1,11 @@
-<project name="RapidMiner_Plugin_Template_Unuk" default="install">
+<project name="RapidMiner_Extension_Template" default="install">
 	<description>Build file for the RapidMiner Template extension</description>
 	
 	<presetdef name="javac">
 	    <javac includeantruntime="false" />
 	  </presetdef>
 	
-	<property name="rm.dir" location="../RapidMiner_Unuk" />
+	<property name="rm.dir" location="../rapidminer" />
 
 	<property name="build.build" location="build" />
 	<property name="build.resources" location="resources" />

@@ -3,6 +3,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="resources"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/RapidMiner_Unuk"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/RapidMiner"/>
 	<classpathentry kind="output" path="build"/>
 </classpath>
