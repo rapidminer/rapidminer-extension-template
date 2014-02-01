@@ -1,0 +1,6 @@
+ext {
+	rapidminerHome = "../rapidminer"
+}
+
+apply from: file("build-extension.gradle")
+
