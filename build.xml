@@ -1,4 +1,4 @@
-<project name="RapidMiner_Extension_Template" default="install">
+<project name="RapidMiner Extension Template" default="install">
 	<description>Build file for the RapidMiner Template extension</description>
 	
 	<presetdef name="javac">
