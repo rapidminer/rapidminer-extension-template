@@ -18,9 +18,9 @@
 	<property name="extension.name" value="Template" />
 	<property name="extension.name.long" value="RapidMiner Template Extension" />
 	<property name="extension.namespace" value="template" />
-    <property name="extension.vendor" value="rapid-i" />
-    <property name="extension.admin" value="Sebastian Land" />
-    <property name="extension.url" value="www.rapid-i.com" />
+    <property name="extension.vendor" value="" />
+    <property name="extension.admin" value="" />
+    <property name="extension.url" value="" />
 
 
 	<property name="extension.needsVersion" value="5.3" />
