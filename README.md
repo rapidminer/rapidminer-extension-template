@@ -1,37 +1,18 @@
 RapidMiner Extension Template
 =============================
 
-A template for building a RapidMiner Extension. 
+A template for building a RapidMiner Studio Extension. 
 
 ### Getting started
-1. Checkout [RapidMiner](https://github.com/rapidminer/rapidminer) (e.g. to _~/git/rapidminer_).
+1. Checkout the extension template
 
-2. Checkout the extension template to the same folder (e.g. to _~/git/extension-template_)
+2. Change the basic extension configuration in _build.gradle_ (e.g. replace 'Template'  by the desired extension name)
 
-3. Change the name property of _build.xml_ and replace "Template"  by the desired extension name
+3. Rename all Java classes and resource file names by replacing 'Template' by the desired extension name.
+ _Do not forget to adapt the **docbundle** attribute in the **operators** element of OperatorsTemplate.xml!_
 
-4. Change these _build.xml_ properties:
-   * extension.name
-   * extension.name.long
-   * extension.namespace
-   * extension.vendor 
-   * extension.admin
-   * extension.url
+4. Add an extension icon by placing an image named "icon.png" in  _src/main/resources/META-INF/_. 
 
-5. Rename all Java classes and resource files by replacing "Template" by the desired extension name. _Do not forget to adapt the **docbundle** in OperatorsTemplate.xml!_
+5. Build and install your extension by executing the _installExtension_ Gradle task 
 
-6. Adapt these _build.xml_ properties to reflect the name changes made in last step:
-   * extension.initClass
-   * extension.objectDefinition
-   * extension.operatorDefinition
-   * extension.parseRuleDefinition
-   * extension.groupProperties
-   * extension.errorDescription
-   * extension.userErrors
-   * extension.guiDescription
-
-7. Add an extension icon by placing an image named "icon.png" in  _resources/META-INF_ (e.g. _resources/META-INF/icon.png_). 
-
-8. Build and install your extension by executing the Ant target "install" 
-
-9. Start RapidMiner and check whether your extension has been loaded
+6. Start RapidMiner Studio and check whether your extension has been loaded
