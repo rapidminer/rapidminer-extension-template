@@ -1,7 +1,8 @@
 RapidMiner Extension Template
 =============================
 
-A template for building a RapidMiner Studio Extension. 
+A template for creating a RapidMiner Studio Extension. 
+Building the extension requires at least Gradle 2.1.
 
 ### Getting started
 1. Checkout the extension template

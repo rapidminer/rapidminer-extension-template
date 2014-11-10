@@ -2,6 +2,11 @@ buildscript {
 	dependencies { classpath 'com.rapidminer.gradle:extension:0.6.+' }
 }
 
+// Define Maven artifact repository
+repositories {
+    jcenter()
+}
+
 apply plugin: 'com.rapidminer.gradle.extension'
 
 extensionConfig {
