@@ -7,3 +7,5 @@
 config/checkstyle/checkstyle.xml
 config/checkstyle/checkstyle.xsl
 config/pmd/ruleset.xml
+.classpath
+.project
