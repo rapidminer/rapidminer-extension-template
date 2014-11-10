@@ -1,6 +1,46 @@
-ext {
-	rapidminerHome = "../rapidminer"
+buildscript {
+	dependencies { classpath 'com.rapidminer.gradle:extension:0.6.+' }
 }
 
-apply from: file("build-extension.gradle")
+apply plugin: 'com.rapidminer.gradle.extension'
 
+extensionConfig {
+	name 'Template'
+
+    /*
+     * The artefact group which will be used when publishing the extensions Jar.
+     * By default it is 'com.rapidminer.extension'.
+     */
+    //groupId = 'com.rapidminer.extension'
+
+    /*
+     * The extension vendor which will be displayed in the extensions about box.
+	 * By default it is 'RapidMiner GmbH'.
+     */
+    //vendor = "RapidMiner GmbH"
+
+    /*
+     * The vendor homepage which will be displayed in the extensions about box.
+     * By default it is 'www.rapidminer.com'.
+     */
+    //homepage = "www.rapidminer.com"
+
+	/*
+	 * The relative path to RapidMiner Studio. It will be used by the
+	 * 'installExtension' task to copy the extension Jar to $rapidminerHome/lib/plugins/ 
+	 */
+	//rapidminerHome = '../rapidminer-studio'
+
+	// define RapidMiner version and extension dependencies
+	dependencies {
+		rapidminer '6.1.0'
+		//extension namespace: 'text', version: '6.1.0'
+	}
+	
+	
+}
+
+// Define third party library dependencies
+dependencies {
+	//compile 'com.google.guava:guava:18.0'
+}

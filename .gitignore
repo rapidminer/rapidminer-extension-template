@@ -1,7 +1,9 @@
-/bin
-/build
+/build/
+/bin/
+.checkstyle
+.pmd
 .gradle/
-.settings/gradle/org.springsource.ide.eclipse.gradle.core.prefs
-.settings/gradle/org.springsource.ide.eclipse.gradle.refresh.prefs
-.settings/org.eclipse.jdt.core.prefs
-target/
+.settings/
+config/checkstyle/checkstyle.xml
+config/checkstyle/checkstyle.xsl
+config/pmd/ruleset.xml
