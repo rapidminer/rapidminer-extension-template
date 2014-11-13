@@ -5,6 +5,7 @@ buildscript {
 // Define Maven artifact repository
 repositories {
     jcenter()
+    maven { uri url('http://dl.bintray.com/rapidminer/public/') }
 }
 
 apply plugin: 'com.rapidminer.gradle.extension'
