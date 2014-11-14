@@ -1,19 +1,17 @@
-buildscript {
-	dependencies { classpath 'com.rapidminer.gradle:extension:0.6.+' }
+plugins {
+	id 'com.rapidminer.extension' version '0.6.1'
 }
 
-// Define Maven artifact repository
+// Define Maven artifact repositories
 repositories {
     jcenter()
     maven { 
-    	url 'http://dl.bintray.com/rapidminer/public/' 
+    	url 'https://dl.bintray.com/rapidminer/public/' 
     }
     maven { 
-    	url 'http://dl.bintray.com/rapidminer/open-source/' 
+    	url 'https://dl.bintray.com/rapidminer/open-source/' 
     }
 }
-
-apply plugin: 'com.rapidminer.gradle.extension'
 
 extensionConfig {
 	name 'Template'
