@@ -1,5 +1,5 @@
 plugins {
-	id 'com.rapidminer.extension' version '0.6.2'
+	id 'com.rapidminer.extension' version '0.7.+'
 }
 
 // Define Maven artifact repositories
