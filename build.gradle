@@ -1,6 +1,10 @@
-plugins {
-	id 'com.rapidminer.extension' version '0.7.+'
+buildscript {
+	dependencies {
+		classpath 'com.rapidminer.gradle:extension:0.7.+'
+	}
 }
+
+apply plugin: 'com.rapidminer.extension'
 
 // Define Maven artifact repositories
 repositories {
