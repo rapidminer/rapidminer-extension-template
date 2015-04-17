@@ -9,3 +9,5 @@ config/checkstyle/checkstyle.xsl
 config/pmd/ruleset.xml
 .classpath
 .project
+rapidminer-extension-template.iml
+.idea/
