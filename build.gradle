@@ -2,8 +2,6 @@ plugins {
     id 'com.rapidminer.extension', '0.7.0'
 }
 
-apply plugin: 'com.rapidminer.extension'
-
 // Define Maven artifact repositories
 repositories {
     jcenter()
