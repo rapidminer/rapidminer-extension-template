@@ -1,6 +1,10 @@
-plugins {
-    id 'com.rapidminer.extension', '0.7.0'
+buildscript {
+	dependencies {
+		classpath 'com.rapidminer.gradle:extension:0.7.+'
+	}
 }
+
+apply plugin: 'com.rapidminer.extension'
 
 // Define Maven artifact repositories
 repositories {
@@ -37,12 +41,6 @@ extensionConfig {
      * It is 'www.rapidminer.com' by default.
      */
     //homepage = "www.rapidminer.com"
-
-    /*
-     * The relative path to RapidMiner Studio. It will be used by the
-     * 'installExtension' task to copy the extension Jar to the '$rapidminerHome/lib/plugins/' folder
-     */
-    //rapidminerHome = '../rapidminer-studio'
 
     // define RapidMiner version and extension dependencies
     dependencies {
