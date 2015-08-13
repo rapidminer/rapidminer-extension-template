@@ -1,6 +1,10 @@
 buildscript {
+	repositories {
+	    jcenter()
+		maven { url 'https://maven.rapidminer.com/content/groups/public/' }
+	}
 	dependencies {
-		classpath 'com.rapidminer.gradle:extension:0.7.+'
+		classpath 'com.rapidminer.gradle:extension:0.7.1'
 	}
 }
 
@@ -9,12 +13,7 @@ apply plugin: 'com.rapidminer.extension'
 // Define Maven artifact repositories
 repositories {
     jcenter()
-    maven { 
-    	url 'https://dl.bintray.com/rapidminer/public/' 
-    }
-    maven { 
-    	url 'https://dl.bintray.com/rapidminer/open-source/' 
-    }
+	maven { url 'https://maven.rapidminer.com/content/groups/public/' }
 }
 
 extensionConfig {
@@ -46,11 +45,7 @@ extensionConfig {
 
 	// define RapidMiner version and extension dependencies
 	dependencies {
-       rapidminer '5.3.0'
-       
-       // Only needed for version 5.3.0
-       useAntArtifact true
-
+       rapidminer '6.5.0'
 		//extension namespace: 'text', version: '6.1.0'
 	}
 }
@@ -58,7 +53,4 @@ extensionConfig {
 // Define third party library dependencies
 dependencies {
 	//compile 'com.google.guava:guava:18.0'
-	
-	// VLDocking as docking framework (https://code.google.com/p/vldocking/)
-	provided 'com.rapidminer.external:vldocking:1.0.0'
 }
