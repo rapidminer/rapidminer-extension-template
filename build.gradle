@@ -43,10 +43,6 @@ extensionConfig {
      */
     //homepage = "www.rapidminer.com"
 
-    // define RapidMiner version and extension dependencies
-    dependencies {
-        rapidminer '6.4.0'
-
 	// define RapidMiner version and extension dependencies
 	dependencies {
        rapidminer '6.5.0'
