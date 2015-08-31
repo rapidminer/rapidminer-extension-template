@@ -3,10 +3,9 @@ buildscript {
 	    jcenter()
 		maven { url 'https://maven.rapidminer.com/content/groups/public/' }
 	}
-	dependencies {
-		classpath 'com.rapidminer.gradle:extension:0.7.1'
-	}
 }
+
+plugins { id 'com.rapidminer.extension' version '0.8.0' }
 
 // Define Maven artifact repositories
 repositories {
