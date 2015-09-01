@@ -11,3 +11,5 @@ config/codenarc/codenarc.conf
 config/pmd/ruleset.xml
 .idea/
 *.iml
+.checkstyle
+.pmd
