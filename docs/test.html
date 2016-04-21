@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+</head>
+<body>
+<h1 id="how-to-create-custom-templates">How to create custom templates</h1>
+<p>As extension developer you can provide both your own templates and tutorials. Templates are processes that serve as starting point for complex workflows and can be selected from the <em>New Process</em> menu. A tutorial is a series of processes accompanied by explanatory texts that can be used to introduce new functionality step by step. Tutorials can be started via the <em>Learn</em> menu.</p>
+<p>This article will guide you through:</p>
+<ul>
+<li>Designing a new template process</li>
+<li>Bundling the template with your extension</li>
+</ul>
+<h2 id="designing-a-template">Designing a template</h2>
+<p>Templates are self-contained files that can be distributed via extensions or loaded from your local file system. While the file format is simple, it is important to comply with the structure described below.</p>
+<h3 id="file-format">File format</h3>
+<p>Templates are ZIP archives that use the <code>.template</code> file extension and contain at least three files:</p>
+<pre><code>my_template.template 
+├── icon.png
+├── My Template.rmp
+└── template.properties</code></pre>
+<p>The <code>template.properties</code> files defines the name of the template and contains a short description. It must be encoded as <code>ISO-8859-1</code> – in particular, unicode encodings will most likely not work. For the example above, the file's contents could be like this:</p>
+<pre><code>template.name=My Template
+template.short_description=This is my custom template.</code></pre>
+<p>The template must contain exactly one RapidMiner process (<code>*.rmp</code>). Its file name must match the template name specified in the properties file.</p>
+<p>The icon that should be used for the template, e.g., in the <em>New Process</em> menu, must be provided as portable network graphic (<code>*.png</code>), named <code>icon.png</code>, and should be of size 64×64.</p>
+<p>In addition to these files, you can bundle arbitrary repository entries. For instance, if you want to include a certain data set in your template, you can do so by adding the corresponding files from your local repository. The following section covers an example for this.</p>
+<p>Finally, please note that the template mechanism does not support subdirectories. RapidMiner Studio will refuse to load template archives that include folders.</p>
+<h3 id="developing-templates">Developing templates</h3>
+<p>You can load your template processes locally without bundling them with your extension. The latter becomes only necessary if you want to distribute your templates.</p>
+<p>All you need to do is to move the template archive into your <code>.RapidMiner\templates</code> directory. Please note that templates stored in that directory override bundled templates: if you bundle a template with your extension and have a local copy of the template installed, only the local copy will loaded.</p>
+<h4 id="a-minimal-template">A minimal template</h4>
+<p>Let us start with a simple <em>“Hello, world!”</em> template that displays a single process annotation. To create the process file open a new process in RapidMiner Studio and add an annotation with a message of your liking:</p>
+<div class="figure">
+<img src="hello_world_process.png" title="Hello, world!&#39; RapidMiner process" alt="&#39;Hello, world!&#39; RapidMiner process" />
+<p class="caption">'Hello, world!' RapidMiner process</p>
+</div>
+<p>Export the process via the <em>File</em> menu (chose <em>Export Process…</em>) and save it as <code>Hello World.rmp</code>.</p>
+<p>Next we need a template icon in the correct format. If you like, you can download this one:</p>
+<div class="figure">
+<img src="icon.png" title="Template icon" alt="Template icon" />
+<p class="caption">Template icon</p>
+</div>
+<p>As last file, we need to create the <code>template.properties</code> file that ties everything together. It is important that the specified template name matches the process name (without the <code>*.rmp</code> extension):</p>
+<pre><code>template.name=Hello World
+template.short_description=A minimal template.</code></pre>
+<p>Finally, we need to create the template archive. For this purpose, create a new ZIP archive containing the three files using an archiver of yor choice. Then change the file extension from <code>*.zip</code> to <code>*.template</code>, e.g., rename <code>hello_world.zip</code> to <code>hello_world.template</code>. The final file structure should be like this:</p>
+<pre><code>hello_world.template 
+├── Hello World.rmp
+├── icon.png
+└── template.properties</code></pre>
+<p>To load the newly created template, copy the template file to <code>.RapidMiner/templates</code> and restart RapidMiner Studio. In the <em>New Process</em> menu, you should now be able to select the your new template:</p>
+<div class="figure">
+<img src="hello_world_template.png" title="Template selection" alt="Template selection" />
+<p class="caption">Template selection</p>
+</div>
+<p>Selecting the new entry should open up the process we created in the first step.</p>
+<h4 id="including-repository-entries">Including repository entries</h4>
+<p>Let us now add a custom data set to the template. In principle, you can bundle any repository entry with a template. But keep in mind that the template mechanism is not designed to handle large data sets.</p>
+<p>Before we start, let us revisit how RapidMiner processes reference repository entries. This is either done via an absolute path, e.g., <code>//Local Repository/data/example</code> or via relative paths, e.g., <code>../data/example</code>.</p>
+<p>For templates we can use neither: While absolute paths will work on the machine that you use to develop the template, the paths will most likely be invalid on other machines. Relative paths will not work at all, since the template mechanism always creates a new process that has no repository location to begin with.</p>
+<p>However, RapidMiner Studio will create a hidden samples repository for each template. For instance, the contents of our <em>“Hello, world!”</em> template are available via the absolute path <code>//Samples/Templates/Hello World</code>. Thus, we will have to adjust repository references in our template processes accordingly.</p>
+<p>First, create a new folder in your local repository, e.g., <code>//Local Repository/Hello World</code>. Then create a new process and drag in the <em>Generate Data by User Specification</em> operator and specify a small data set:</p>
+<div class="figure">
+<img src="generate_hello_world_data.png" title="Generate hello world data set" alt="Generate hello world data set" />
+<p class="caption">Generate hello world data set</p>
+</div>
+<p>Add a <em>Store</em> operator to save the specified data set. Configure it to store the data set in the directory created above, e.g., as <code>//Local Repository/Hello World/Hello World Data</code>:</p>
+<div class="figure">
+<img src="store_hello_world_data.png" title="Store hello world data set" alt="Store hello world data set" />
+<p class="caption">Store hello world data set</p>
+</div>
+<p>Run the process once to create the repositor entry.</p>
+<p>Create a new process and store it in the same directory as the data set, e.g., as <code>//Local Repository/Hello World/Hello World</code>. Drag the data set into the blank process and connect the <em>Retrieve</em> operator to the results port:</p>
+<div class="figure">
+<img src="hello_world_from_data.png" title="Hello world from data" alt="Hello world from data" />
+<p class="caption">Hello world from data</p>
+</div>
+<p>Once you save the process, the repository entry will be referenced via a relative path:</p>
+<div class="figure">
+<img src="relative_path.png" title="Relative repository path" alt="Relative repository path" />
+<p class="caption">Relative repository path</p>
+</div>
+<p>Changes this to <code>//Samples/Templates/Hello World/Hello World Data</code> (this assumes that we continue with the template name <em>Hello World</em>):</p>
+<div class="figure">
+<img src="templates_path.png" title="Absolute repository path" alt="Absolute repository path" />
+<p class="caption">Absolute repository path</p>
+</div>
+<p>RapidMiner Studio might warn you about in invalid path since the template has not been loaded yet. Ignore the warning and save the process.</p>
+<p>Your local repository should now have a structure similar to this:</p>
+<pre><code>Local Repository
+├── data
+├── processes
+├── …
+├── Hello World
+│   ├── Hello World Data
+│   └── Hello World
+└── …</code></pre>
+<p>If you browse the repository with your operating system's file browser, you will get a slightly different picture. To do so, alternative-click on the repository an chose <em>Open in file browser</em>:</p>
+<pre><code>.RapidMiner/repositories/Local Repository
+├── …
+├── Hello World
+│   ├── Hello World Data.ioo
+│   ├── Hello World Data.md
+│   ├── Hello World Data.properties
+│   ├── Hello World.properties
+│   └── Hello World.rmp
+└── …</code></pre>
+<p>As you can see the generated data set is split into three files. It is important that we bundle both the <code>*.ioo</code> (the actual data) and the <code>*.md</code> (meta data) with the template. However, we can ignore the <code>*.properties</code> files.</p>
+<p>Update the template archive created in the previous section and add the generated data set. The archive should now look like this:</p>
+<pre><code>hello_world.template 
+├── Hello World Data.ioo
+├── Hello World Data.md
+├── Hello World.rmp (updated process)
+├── icon.png
+└── template.properties</code></pre>
+<p>Restart RapidMiner Studio to load the updated template. You should be able to run the template without having to modify the process.</p>
+<h3 id="bundling-templates">Bundling templates</h3>
+<p>Bundling templates with your extension is a straight forward process. All you have to do is to add your template archives as resources and register them in the initialization code of your extension.</p>
+<p>If you have no experience with writing extensions yet, please refer to out <a href="http://docs.rapidminer.com/downloads/RapidMiner-extensions.pdf">Building RapidMiner Extensions</a> guide (PDF). Chapters 1-3 cover all you need to know to build an extension that can be used to distribute templates.</p>
+<h4 id="adding-templates-as-resources">Adding templates as resources</h4>
+<p>By convention build tools such as Maven and Gradle look for resources in the <code>src/main/resources</code> directory. We recommend using this structure for RapidMiner extensions as well.</p>
+<p>Let us assume that you chose <code>org.myorg.myextension</code> as group id. Then your resources should be located under <code>src/main/resources/org/myorg/myextension</code>. Note that RapidMiner will add the <code>template</code> directory to the path automatically. Thus, you could bundle the template create above as <code>…/org/myorg/myextension/template/hello_world.template</code>:</p>
+<pre><code>my_extension
+├── README.md
+├── build.gradle
+├── …
+├── src
+│   └── main
+│       ├── java
+│       │   └── …
+│       └── resources
+│           ├── org
+│           │   └── myorg
+│           │       └── myextension
+│           │           └── template
+│           │               └── hello_world.template
+│           └── …
+└── …</code></pre>
+<p>However, RapidMiner will not search for resources in that directory unless you register the location as resource source. This can be easily done in the initialization code of your extension. All you need to do is to add the following line to the <code>initPlugin()</code> method:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="co">/**</span>
+<span class="co"> * This method will be called directly after the extension is initialized. This is the first</span>
+<span class="co"> * hook during start up. No initialization of the operators or renderers has taken place when</span>
+<span class="co"> * this is called.</span>
+<span class="co"> */</span>
+<span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">initPlugin</span>() {
+    <span class="co">// register extension resources</span>
+    Tools.<span class="fu">addResourceSource</span>(<span class="kw">new</span> <span class="fu">ResourceSource</span>(PluginInitMyExtension.<span class="fu">class</span>.<span class="fu">getClassLoader</span>(), 
+        <span class="st">&quot;org/myorg/myextension/&quot;</span>));
+}</code></pre></div>
+<p>Now you can register extension via the so-called template manager. To register the template designed above, you could add another line to the plugin initialization code:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">initPlugin</span>() {
+    <span class="co">// register extension resources</span>
+    Tools.<span class="fu">addResourceSource</span>(<span class="kw">new</span> <span class="fu">ResourceSource</span>(PluginInitMyExtension.<span class="fu">class</span>.<span class="fu">getClassLoader</span>(), 
+        <span class="st">&quot;org/myorg/myextension/&quot;</span>));
+    <span class="co">// register hello world template</span>
+    TemplateManager.<span class="fu">INSTANCE</span>.<span class="fu">registerTemplate</span>(<span class="st">&quot;hello_world&quot;</span>);
+}</code></pre></div>
+<h4 id="testing-the-templates">Testing the templates</h4>
+<p>There are no further special steps involved in testing the bundled templates. All you need to do is to build a new version of your extension, e.g., via the command <code>gradle clean installExtension</code>.</p>
+<p>But keep in mind that templates stored in your <code>.RapidMiner</code> directory override bundled template of the same name. Thus, make sure to remove all working copies of your templates before starting RapidMiner Studio.</p>
+</body>
+</html>
