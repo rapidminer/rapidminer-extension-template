@@ -44,8 +44,8 @@ extensionConfig {
 
     // define RapidMiner version and extension dependencies
     dependencies {
-        rapidminer '7.3.0'
-        //extension namespace: 'text', version: '7.3.0'
+        rapidminer '7.3.1'
+        //extension namespace: 'text', version: '7.3.1'
     }
 }
 
