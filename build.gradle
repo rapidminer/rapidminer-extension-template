@@ -44,12 +44,12 @@ extensionConfig {
 
     // define RapidMiner version and extension dependencies
     dependencies {
-        rapidminer '8.2.0'
+        rapidminer '9.0.0'
         //extension namespace: 'text', version: '8.1.0'
     }
 }
 
 // Define third party library dependencies
 dependencies {
-	//compile 'com.google.guava:guava:18.0'
+	//compile 'com.google.guava:guava:26.0'
 }
