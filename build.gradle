@@ -1,16 +1,16 @@
 buildscript {
 	repositories {
-	    jcenter()
-		maven { url 'https://maven.rapidminer.com/content/groups/public/' }
+	    mavenCentral()
+            maven { url 'https://maven.rapidminer.com/content/groups/public/' }
 	}
 }
 
-plugins { id 'com.rapidminer.extension' version '0.9.4' }
+plugins { id 'com.rapidminer.extension' version '0.10.0' }
 
 // Define Maven artifact repositories
 repositories {
-    jcenter()
-	maven { url 'https://maven.rapidminer.com/content/groups/public/' }
+    mavenCentral()
+    maven { url 'https://maven.rapidminer.com/content/groups/public/' }
 }
 
 extensionConfig {
@@ -44,8 +44,8 @@ extensionConfig {
 
     // define RapidMiner version and extension dependencies
     dependencies {
-        rapidminer '9.8.0'
-        //extension namespace: 'text', version: '8.1.0'
+        rapidminer '10.1.1'
+        //extension namespace: 'text', version: '10.0.0'
     }
 }
 
